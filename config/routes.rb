@@ -1,4 +1,18 @@
 Zombier::Application.routes.draw do
+  authenticated :user do
+    root :to => 'static_pages#home'
+  end
+  devise_scope :user do
+    root :to => 'devise/registrations#new'
+    match '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation
+  end
+  devise_for :users
+  #root :to => 'static_pages#home'
+
+  get 'static_pages/contact'
+  get 'static_pages/help'
+  get 'static_pages/about'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
