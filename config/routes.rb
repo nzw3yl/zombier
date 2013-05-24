@@ -1,4 +1,9 @@
 Zombier::Application.routes.draw do
+
+  resources :project_statuses
+  resources :customers
+  resources :projects
+
   authenticated :user do
     root :to => 'static_pages#home'
   end
@@ -8,11 +13,13 @@ Zombier::Application.routes.draw do
   end
   devise_for :users
   #root :to => 'static_pages#home'
+  resources :project_types
 
-  get 'static_pages/contact'
-  get 'static_pages/help'
-  get 'static_pages/about'
-  
+  match '/contact' => 'static_pages#contact'
+  match '/about' => 'static_pages#about'
+  match '/help' => 'static_pages#help'
+  match '/calendar' => 'projects#calendar'
+   
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -38,7 +45,7 @@ Zombier::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
-
+ 
   # Sample resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

@@ -1,0 +1,26 @@
+<div class="well sidebar-nav">
+    <ul class="nav nav-list">
+	<% case params[:controller] %>
+	<% when "projects" %>
+      <li class="nav-header">Manage Projects</li>
+      <li><%= link_to "Schedule", "/calendar"  %></li>
+      <li><%= link_to "Link2", "/path2"  %></li>
+      <li><%= link_to "Link3", "/path3"  %></li>
+    <% when "people" %>
+      <li class="nav-header">Manage People</li>
+      <li><%= link_to "List", projects_path  %></li>
+      <li><%= link_to "Link2", "/path2"  %></li>
+      <li><%= link_to "Link3", "/path3"  %></li>
+    <% when "organizations" %>
+      <li class="nav-header">Manage Orgs</li>
+      <li><%= link_to "Customers", projects_path  %></li>
+      <li><%= link_to "Project Types", "/path2"  %></li>
+      <li><%= link_to "Invite", "/path3"  %></li>
+    <% else %>
+      <li class="nav-header">Sidebar</li>
+      <li><%= link_to "Link1", "/path1"  %></li>
+      <li><%= link_to "Link2", "/path2"  %></li>
+      <li><%= link_to "Link3", "/path3"  %></li>
+    <% end %>
+    </ul>
+</div><!--/.well -->
