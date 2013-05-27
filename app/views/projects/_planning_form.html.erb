@@ -1,0 +1,16 @@
+<%= form_for @project, input_html: {class: 'span3'}, wrapper_html: {class: 'controls controls-row'}  do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :current_start, :as => :date_picker, input_html: {"data-date-format" => "yyyy-mm-dd"}  %>
+  <%= f.text_field :current_close, :as => :date_picker, input_html: {"data-date-format" => "yyyy-mm-dd"}  %>
+  <div class="field">
+	<%= f.fields_for :phases  do |builder| %>
+      <%= render 'phase_fields', f: builder %>
+	<% end %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                projects_path, :class => 'btn' %>
+  </div>
+<% end %>
+ 

@@ -1,9 +1,13 @@
 Zombier::Application.routes.draw do
 
+  resources :allocations
+  resources :project_roles
+  resources :roles
   resources :project_statuses
   resources :customers
-  resources :projects
-
+  resources :projects, :shallow => true do
+    resources :phases
+  end
   authenticated :user do
     root :to => 'static_pages#home'
   end
@@ -14,7 +18,8 @@ Zombier::Application.routes.draw do
   devise_for :users
   #root :to => 'static_pages#home'
   resources :project_types
-
+  
+  get 'projects/:id/plan', to: 'projects#plan', as: :plan
   match '/contact' => 'static_pages#contact'
   match '/about' => 'static_pages#about'
   match '/help' => 'static_pages#help'

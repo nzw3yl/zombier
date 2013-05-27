@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @allocation.user_id %>
+</p>
+
+<p>
+  <b>Phase:</b>
+  <%= @allocation.phase_id %>
+</p>
+
+<p>
+  <b>Project role:</b>
+  <%= @allocation.project_role_id %>
+</p>
+
+<p>
+  <b>Visible:</b>
+  <%= @allocation.visible %>
+</p>
+
+<p>
+  <b>Percent:</b>
+  <%= @allocation.percent %>
+</p>
+
+
+<%= link_to 'Edit', edit_allocation_path(@allocation) %> |
+<%= link_to 'Back', allocations_path %>

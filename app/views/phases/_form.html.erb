@@ -1,0 +1,15 @@
+
+<%= simple_form_for @phase, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :title %>
+  <%= f.input :project_id, :as => :hidden, :input_html => { :value => @project.id } %>
+  <%= f.input :start %>
+  <%= f.input :close %>
+  <%= f.input :milestone %>
+  <%= f.input :value %>
+  <%= f.input :cost %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                project_phases_path(@project), :class => 'btn' %>
+  </div>
+<% end %>

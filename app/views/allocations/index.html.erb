@@ -1,0 +1,31 @@
+<h1>Listing allocations</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Phase</th>
+    <th>Project role</th>
+    <th>Visible</th>
+    <th>Percent</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @allocations.each do |allocation| %>
+  <tr>
+    <td><%= allocation.user_id %></td>
+    <td><%= allocation.phase_id %></td>
+    <td><%= allocation.project_role_id %></td>
+    <td><%= allocation.visible %></td>
+    <td><%= allocation.percent %></td>
+    <td><%= link_to 'Show', allocation %></td>
+    <td><%= link_to 'Edit', edit_allocation_path(allocation) %></td>
+    <td><%= link_to 'Destroy', allocation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Allocation', new_allocation_path %>

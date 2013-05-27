@@ -81,6 +81,7 @@ class ProjectsController < ApplicationController
     end
   end
   
-  def calendar
+  def plan
+    @project = Project.find(params[:id])
   end
 end

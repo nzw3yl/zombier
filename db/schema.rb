@@ -11,12 +11,50 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130524024048) do
+ActiveRecord::Schema.define(:version => 20130527001650) do
+
+  create_table "allocations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "phase_id"
+    t.integer  "project_role_id"
+    t.boolean  "visible",         :default => true
+    t.integer  "percent",         :default => 100
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.boolean  "visible",    :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
 
   create_table "customers", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "phases", :force => true do |t|
+    t.string   "title"
+    t.date     "start"
+    t.date     "close"
+    t.integer  "project_id"
+    t.boolean  "milestone",  :default => false
+    t.integer  "value"
+    t.integer  "cost"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "project_roles", :force => true do |t|
+    t.string   "name"
+    t.integer  "organization_id"
+    t.boolean  "active",          :default => true
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "project_statuses", :force => true do |t|
@@ -45,6 +83,14 @@ ActiveRecord::Schema.define(:version => 20130524024048) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "project_status_id"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.integer  "organization_id"
+    t.boolean  "active",          :default => true
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,11 @@
+<fieldset>
+	<%= f.text_field :title %>
+	<%= f.text_field :start, :as => :date_picker, input_html: {"data-date-format" => "yyyy-mm-dd"}, class: 'phase-datepicker'  %>
+	<%= f.text_field :close, :as => :date_picker, input_html: {"data-date-format" => "yyyy-mm-dd"}, class: 'phase-datepicker'  %>
+	<%= f.check_box :_destroy %>
+	<%= f.fields_for :allocations  do |builder| %>
+      <%= render 'allocation_fields', f: builder %>
+	<% end %>
+	<br/>
+	<%= link_to_add_fields "Add Allocation", f, :allocations %>
+</fieldset>
